@@ -29,6 +29,12 @@ class Set:
         else:
             return self.storage_root.count()
 
+    def __str__(self):
+        return_string = '{ '
+        for element in self:
+            return_string += str(element) + ' '
+        return  return_string + '}'
+
     def add(self, new_element):
         """Insert new element into set. Return True if successfully added, return False if already in set."""
         element_key = self.get_key(new_element)
