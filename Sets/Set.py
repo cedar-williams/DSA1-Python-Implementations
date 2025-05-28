@@ -73,7 +73,11 @@ class Set:
                         node = node.right
 
     def difference(self, other_set):
-        pass
+        result = Set(self.get_key)
+        for element in self:
+            if other_set.search(self.get_key(element)) is None:
+                result.add(element)
+        return result
 
     def filter(self, predicate):
         pass
@@ -138,8 +142,8 @@ class Set:
             node_key = self.get_key(node.data)
             if node_key == key:
                 return node
-            elif node_key < key:
-                node = node.left
-            else:
+            elif key > node_key:
                 node = node.right
+            else:
+                node = node.left
         return node
