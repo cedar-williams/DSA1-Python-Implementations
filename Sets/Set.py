@@ -6,6 +6,7 @@ class Set:
         self.storage_root = None
 
         # If we want a custom key function we can specify it, otherwise we just use the key
+        # We will use self.get_key as a reference to functon this later on
         if get_key_function is None:
             self.get_key = lambda el: el
         else:
@@ -74,7 +75,21 @@ class Set:
     def intersection(self, other_set):
         pass
 
+    def union(self, other_set):
+        pass
+
+    def map(self, map_function):
+        result = Set(self.get_key)
+        for element in self:
+            new_element = map_function(element)
+            result.add(new_element)
+        return result
+
+
     def remove(self):
+        pass
+
+    def remove_node(self):
         pass
 
     def search(self):
