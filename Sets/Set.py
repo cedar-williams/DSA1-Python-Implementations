@@ -85,11 +85,35 @@ class Set:
             result.add(new_element)
         return result
 
-    def remove(self):
-        pass
+    def remove(self, key):
+        self.remove_node(self.node_search(key))
 
-    def remove_node(self):
-        pass
+    def remove_node(self, node_to_remove):
+        if node_to_remove is not None:
+            # Case 1 - internal node with 2 children
+            if (node_to_remove.left is not None) and (node_to_remove.right is not None):
+                successor = node_to_remove.get_successor()
+                node_data = successor.data
+                self.remove_node(successor)
+                node_to_remove.data = node_data
+
+            # Case 2 - root node with 0 or 1 child
+            elif node_to_remove is self.storage_root:
+                if node_to_remove.left is not None:
+                    self.storage_root = node_to_remove.left
+                elif node_to_remove.right is not None:
+                    self.storage_root = node_to_remove.right
+
+                if self.storage_root is not None:
+                    self.storage_root.parent = None
+
+            # Case 3 - internal node with left child only
+            elif node_to_remove.left is not None:
+                node_to_remove.parent.replace_child(node_to_remove, node_to_remove.left)
+
+            # Case 4 - internal node with right child only OR leaf node
+            else:
+                node_to_remove.parent.replace_child(node_to_remove, node_to_remove.right)
 
     def node_search(self, key):
         """Search for and return node matching key, or None if no node found"""
