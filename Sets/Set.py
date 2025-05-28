@@ -80,7 +80,11 @@ class Set:
         return result
 
     def intersection(self, other_set):
-        pass
+        result = Set(self.get_key)
+        for element in self:
+            if other_set.search(self.get_key(element)) is not None:
+                result.add(element)
+        return result
 
     def union(self, other_set):
         pass
