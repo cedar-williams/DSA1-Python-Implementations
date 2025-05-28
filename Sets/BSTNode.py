@@ -26,7 +26,7 @@ class BSTNode:
             node = self
             while (node.parent is not None) and (node is node.parent.right):
                 node = node.parent
-            return node
+            return node.parent
 
     def replace_child(self, current_child, new_child):
         if current_child is self.left:
