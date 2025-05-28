@@ -22,6 +22,12 @@ class Set:
             min_node = min_node.left
         return BSTIterator(min_node)
 
+    def __len__(self):
+        if self.storage_root is None:
+            return 0
+        else:
+            return self.storage_root.count()
+
     def add(self, new_element):
         """Insert new element into set. Return True if successfully added, return False if already in set."""
         element_key = self.get_key(new_element)
@@ -58,6 +64,15 @@ class Set:
                         return True
                     else:
                         node = node.right
+
+    def difference(self, other_set):
+        pass
+
+    def filter(self, predicate):
+        pass
+
+    def intersection(self, other_set):
+        pass
 
     def remove(self):
         pass
