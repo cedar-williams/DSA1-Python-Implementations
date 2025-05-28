@@ -87,7 +87,12 @@ class Set:
         return result
 
     def union(self, other_set):
-        pass
+        result = Set(self.get_key)
+        for element in self:
+            result.add(element)
+        for element in other_set:
+            result.add(element)
+        return result
 
     def map(self, map_function):
         result = Set(self.get_key)
