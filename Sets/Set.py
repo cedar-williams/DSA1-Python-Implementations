@@ -121,19 +121,6 @@ class Set:
             else:
                 node_to_remove.parent.replace_child(node_to_remove, node_to_remove.right)
 
-    def node_search(self, key):
-        """Search for and return node matching key, or None if no node found"""
-        node = self.storage_root
-        while node is not None:
-            node_key = self.get_key(node.data)
-            if node_key == key:
-                return node
-            elif node_key < key:
-                node = node.left
-            else:
-                node = node.right
-        return node
-
     def search(self, key):
         """Search for and return data associated with node"""
         # First find the node
@@ -145,15 +132,14 @@ class Set:
         return None
 
     def node_search(self, key):
-        """Search for the node. If found return the node, else return None"""
+        """Search for and return node matching key, or None if no node found"""
         node = self.storage_root
-        # Search through the BST for the node, returning if found
         while node is not None:
             node_key = self.get_key(node.data)
             if node_key == key:
                 return node
-            elif key > node_key:
-                node = node.right
-            else:
+            elif node_key < key:
                 node = node.left
+            else:
+                node = node.right
         return node
