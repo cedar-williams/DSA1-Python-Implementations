@@ -85,15 +85,34 @@ class Set:
             result.add(new_element)
         return result
 
-
     def remove(self):
         pass
 
     def remove_node(self):
         pass
 
-    def search(self):
-        pass
+    def node_search(self, key):
+        """Search for and return node matching key, or None if no node found"""
+        node = self.storage_root
+        while node is not None:
+            node_key = self.get_key(node.data)
+            if node_key == key:
+                return node
+            elif node_key < key:
+                node = node.left
+            else:
+                node = node.right
+        return node
+
+    def search(self, key):
+        """Search for and return data associated with node"""
+        # First find the node
+        node = self.node_search(key)
+
+        # Then return its data
+        if node is not None:
+            return node.data
+        return None
 
     def node_search(self, key):
         """Search for the node. If found return the node, else return None"""
