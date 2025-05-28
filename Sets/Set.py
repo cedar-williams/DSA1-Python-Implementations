@@ -79,9 +79,6 @@ class Set:
                 result.add(element)
         return result
 
-    def filter(self, predicate):
-        pass
-
     def intersection(self, other_set):
         pass
 
@@ -93,6 +90,13 @@ class Set:
         for element in self:
             new_element = map_function(element)
             result.add(new_element)
+        return result
+
+    def filter(self, predicate):
+        result = Set(self.get_key)
+        for element in self:
+            if predicate(element) is True:
+                result.add(element)
         return result
 
     def remove(self, key):
