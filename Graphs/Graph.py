@@ -17,3 +17,9 @@ class Graph:
     def add_undirected_edge(self, a_vertex, b_vertex, weight=1.0):
         self.add_directed_edge(a_vertex, b_vertex, weight)
         self.add_directed_edge(b_vertex, a_vertex, weight)
+
+    def get_vertex(self, vertex_label):
+        for vertex in self.adjacency_list:
+            if vertex.label == vertex_label:
+                return vertex
+        return None
