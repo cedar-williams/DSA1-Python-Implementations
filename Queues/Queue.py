@@ -1,5 +1,5 @@
 from Lists.LinkedList import LinkedList
-from Node import Node
+from Queues.Node import Node
 
 class Queue:
     def __init__(self):
@@ -16,7 +16,10 @@ class Queue:
 
 
     def peek(self):
-        return self.list.head.data
+        if self.list.head:
+            return self.list.head.data
+        else:
+            return None
 
     def is_empty(self):
         return self.list.head is None
