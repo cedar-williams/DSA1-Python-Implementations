@@ -25,3 +25,13 @@ class Graph:
             if vertex.label == vertex_label:
                 return vertex
         return None
+
+    def get_vertex_list(self):
+        return list(self.adjacency_list)
+
+    def get_incoming_edges(self, vertex):
+        incoming_edges = []
+        for edge in self.edge_weights:
+            if edge[1] is vertex:
+                incoming_edges.append(edge)
+        return incoming_edges
