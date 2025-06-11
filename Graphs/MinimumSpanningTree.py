@@ -1,5 +1,5 @@
 import heapq
-from Graph import Graph, VertexG
+from Graph import Graph, Vertex
 
 class EdgeWeight:
     def __init__(self, from_vertex, to_vertex, weight):
