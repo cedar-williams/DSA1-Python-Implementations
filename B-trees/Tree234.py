@@ -7,6 +7,8 @@ class Tree234:
     def insert(self, key, node = None, parent_node = None):
         """Insert new key into the tree, provided key doesn't already exist"""
 
+        print('Insert called with key:', key)
+
         # Special case - the tree is empty
         if self.root is None:
             self.root = Node234(key)
@@ -18,12 +20,13 @@ class Tree234:
 
         # Check if key is duplicate
         if node.has_key(key):
-            return key
+            return None
 
         # Preemptively split full nodes
         if node.C is not None:
             node = self.split(node, parent_node)
 
+        print('Node type', type(node))
         if not node.is_leaf():
             if key < node.A:
                 return self.insert(key, node.left, node)

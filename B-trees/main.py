@@ -1,3 +1,6 @@
+from Tree234 import Tree234
+from Node234 import Node234
+
 user_values = input('Enter insert values with spaces between: ')
 print()
 
